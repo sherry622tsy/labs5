@@ -59,11 +59,67 @@ POST /users
 
 ```json
 {
-  "success": true,
-  "user_id": 1
+    "success": true,
+    "user_id": 4
 }
 ```
 
+---
+
+#### ✅ TC-002 – Get All Users
+
+* **Request:**
+
+```json
+GET /users
+```
+
+* **Response:**
+
+```json
+{
+    "success": true,
+    "users": [
+        {
+            "email": "shiyuan@example.com",
+            "height_cm": 165,
+            "id": 2,
+            "name": "Shiyuan Tang",
+            "weight_kg": 55.5
+        },
+        {
+            "email": "test@example.com",
+            "height_cm": 170,
+            "id": 4,
+            "name": "Test User",
+            "weight_kg": 65.5
+        }
+    ]
+}
+```
+
+---
+
+
+
+
+#### ✅ TC-003 – Get User by ID
+
+```json
+GET /users/4
+```
+
+* **Response:**
+
+```json
+{
+    "email": "test@example.com",
+    "height_cm": 170,
+    "id": 4,
+    "name": "Test User",
+    "weight_kg": 65.5
+}
+```
 ---
 
 #### ✅ TC-004 – Update User
@@ -82,12 +138,28 @@ PUT /users/1
 
 ```json
 {
-  "success": true,
-  "message": "User updated"
+    "message": "User updated",
+    "success": true
 }
 ```
 
 ---
+
+
+#### ✅ TC-005 – Get Deleted User
+
+* **Request:** `DELETE /users/4`
+* **Expected:**
+
+```json
+{
+    "message": "User 4 deleted",
+    "success": true
+}
+```
+
+---
+
 
 #### ✅ TC-006 – Get Deleted User
 
@@ -104,7 +176,7 @@ PUT /users/1
 
 ### 🧪 **Test Execution Result**
 
-All 6 test cases executed successfully using `unittest` without manual intervention. The test environment was reset between runs using a test database or by rerunning `db_init.sql`.
+All 6 test cases executed successfully using `postman` without manual intervention. The test environment was reset between runs using a test database or by rerunning `db_init.sql`.
 
 > **Command used:**
 
