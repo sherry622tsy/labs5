@@ -9,7 +9,7 @@ def get_db_connection():
     conn = psycopg2.connect(**DB_CONFIG)
     return conn
 
-# ---------- Create User ----------
+# -------- Create new User ----------
 @app.route('/users', methods=['POST'])
 def create_user():
     data = request.get_json()
