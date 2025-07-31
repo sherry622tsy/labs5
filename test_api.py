@@ -5,11 +5,11 @@ from app import app
 class UserApiTestCase(unittest.TestCase):
 
     def setUp(self):
-        # 创建 Flask 测试客户端
+        # Create Flask test client
         self.client = app.test_client()
         self.base_url = '/users'
 
-        # 测试用户数据
+        # Sample user data
         self.sample_user = {
             'name': 'Test User',
             'email': 'test@example.com',
@@ -28,7 +28,7 @@ class UserApiTestCase(unittest.TestCase):
         self.assertTrue(data['success'])
         self.assertIn('user_id', data)
 
-        # 保存 user_id 供后续使用
+        # Save user_id for subsequent tests
         self.__class__.user_id = data['user_id']
 
     def test_2_get_all_users(self):
@@ -66,7 +66,7 @@ class UserApiTestCase(unittest.TestCase):
         data = response.get_json()
         self.assertTrue(data['success'])
 
-        # 确认已删除
+        # Confirm the user has been deleted
         follow_up = self.client.get(f"{self.base_url}/{self.__class__.user_id}")
         self.assertEqual(follow_up.status_code, 404)
 
