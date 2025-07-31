@@ -1,7 +1,7 @@
 DB_CONFIG = {
     'dbname': 'fittracking',
     'user': 'postgres',
-    'password': '',
+    'password': '123',
     'host': 'localhost',
     'port': 5432
 }
